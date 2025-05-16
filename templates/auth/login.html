@@ -8,11 +8,12 @@
 
 {% block body %}
 <div class="login-container">
-    <h2>Iniciar Sesión</h2>
+    <title>Image Processing</title>
+    <h2>Login</h2>
     <form id="loginForm">
-        <input type="text" id="username" placeholder="Usuario" required>
-        <input type="password" id="password" placeholder="Contraseña" required>
-        <button type="submit">Ingresar</button>
+        <input type="text" id="username" placeholder="User Name" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Submit</button>
     </form>
     <p class="error-message" id="errorMessage"></p>
 </div>
@@ -22,7 +23,7 @@
     // Tu código JS de login aquí (opcional moverlo a un archivo .js)
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        // ... (mismo código JS que en el ejemplo anterior)
+    
     });
 </script>
 {% endblock %}
