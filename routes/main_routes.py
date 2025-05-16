@@ -1,0 +1,12 @@
+from flask import Blueprint, render_template
+
+main = Blueprint('main', __name__)
+
+@main.route("/")
+def index():
+    return render_template("index.html")
+
+
+@main.route("/Userlogin")
+def userLogin():
+    return render_template("auth/login.html")
