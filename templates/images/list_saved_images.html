@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saved Images</title>
+</head>
+<body>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% else %}
+
+        <h1>Saved Images</h1>
+        <ul>
+            {% for image in images %}
+                <li>
+                    {{ image.filename }} - 
+                    <a href="{{ url_for('main.download_image', filename=image.filename) }}">Descargar</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{{ url_for('main.index') }}">Volver</a>
+</body>
+</html>
