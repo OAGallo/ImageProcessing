@@ -8,7 +8,7 @@ from routes.main_routes import main
 app = server()
 app.register_blueprint(main)
 
-auth.init_auth()
+auth.init_auth(app)
 
 if __name__ == "__main__":
     with app.app_context():

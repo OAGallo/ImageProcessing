@@ -1,0 +1,30 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block head %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
+    <title>Image Processing</title>
+    <h1>Image Processing: INBest</h1>
+    <h5>Author: Oscar Alberto Gallo Garcia</h5>
+</div>
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
+    <h2>upload the image for processing</h2>
+    <form action="{{ url_for('main.processing') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}
