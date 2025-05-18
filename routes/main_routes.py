@@ -44,7 +44,7 @@ def processing():
 @main.route("/savedImages")
 def list_images():
     try:
-        images = imagesModel.query.all()
+        images = Images.query.all()
         if not images:
             message = "Don't have saved images"
         else:
