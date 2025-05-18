@@ -95,3 +95,23 @@ def grayscale_image():
     else:
         flash('No se pudo procesar la imagen.')
         return redirect(url_for('main.processing'))
+    
+@main.route('/save_processed_image', methods=['POST'])
+def save_processed_image():
+    filename = request.form['filename']
+    processed_filename = f"processed_{filename}"
+    original_path = os.path.join(UPLOAD_FOLDER, filename)
+    processed_path = os.path.join(UPLOAD_FOLDER, processed_filename)
+
+    if not os.path.exists(processed_path):
+        import shutil
+        shutil.copyfile(original_path, processed_path)
+    
+    if Images.query.filter_by(filename=processed_filename).first():
+        flash('The image is already saved.')
+    else:
+        image = Images(filename=processed_filename)
+        db.session.add(image)
+        db.session.commit()
+        flash('Save processed image.')
+    return render_template("images/ProcessingMenu.html", filename=processed_filename)
