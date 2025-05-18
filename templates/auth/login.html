@@ -8,23 +8,21 @@
 
 {% block body %}
 <div class="login-container">
-    <title>Image Processing</title>
     <h2>Login</h2>
-    <form id="loginForm">
-        <input type="text" id="username" placeholder="User Name" required>
-        <input type="password" id="password" placeholder="Password" required>
+    <form method="post">
+        <input type="text" name="name" placeholder="User Name" required>
+        <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Submit</button>
     </form>
-    <p class="error-message" id="errorMessage"></p>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="error-message">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <a href="{{ url_for('auth.register') }}">Don't have an account? Register</a>
 </div>
-
-{% block scripts %}
-<script>
-    // Tu código JS de login aquí (opcional moverlo a un archivo .js)
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-    
-    });
-</script>
-{% endblock %}
 {% endblock %}

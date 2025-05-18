@@ -15,4 +15,5 @@ def server():
     db.init_app(app) #Init database
     
     
+    
     return app
