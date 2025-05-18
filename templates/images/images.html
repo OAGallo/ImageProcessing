@@ -15,7 +15,7 @@
     <form action="{{ url_for('main.processing') }}" method="post" enctype="multipart/form-data">
         <input type="file" name="file" id="fileInput" accept="image/*" required>
         <img id="preview" src="#" alt="Preview" style="display:none; max-width:300px; margin:1rem 0;" />
-        <div style="display: flex; gap: 1rem;">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; margin-top: 1rem;">
             <button type="submit">Upload</button>
             <button type="button" id="cancelBtn">Cancel</button>
         </div>
