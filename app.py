@@ -1,12 +1,14 @@
 from config import server
 from database import db
-from Models import auth
+from Models import auth 
 
 #To use routes
 from routes.main_routes import main
+from routes.auth_routes import auth as user_auth
 
 app = server()
 app.register_blueprint(main)
+app.register_blueprint(user_auth)
 
 auth.init_auth(app)
 

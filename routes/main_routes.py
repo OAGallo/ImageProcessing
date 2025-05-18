@@ -11,10 +11,12 @@ def index():
     return render_template("index.html")
 
 
-@main.route("/Userlogin")
+@main.route("/Userlogin", methods=['GET', 'POST'])
 def userLogin():
     return render_template("auth/login.html")
 
+
+#Image processing routes
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}

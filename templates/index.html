@@ -10,6 +10,10 @@
 
 {% block body %}
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
-    <a href="{{ url_for('main.userLogin') }}"><button>Login</button></a>
+    <h6>Welcome to Image Processing</h6>
+    <div style="display: flex; gap: 1rem;">
+        <a href="{{ url_for('auth.login') }}"><button>Login</button></a>
+        <a href="{{ url_for('auth.register') }}"><button>Create User</button></a>
+    </div>
 </div>
 {% endblock %}
