@@ -30,6 +30,7 @@ def processing():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            filename = f"original_{filename}"
             os.makedirs(UPLOAD_FOLDER, exist_ok=True)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             # Guardar en la base de datos
