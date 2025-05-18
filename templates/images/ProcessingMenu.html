@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Image Processing Menu{% endblock %}
+
+{% block body %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh;">
+    <h2>Image Processing Menu</h2>
+    <img src="{{ url_for('main.download_image', filename=filename) }}" alt="Uploaded Image" style="max-width: 400px; margin-bottom: 2rem;">
+    <form action="{{ url_for('main.rotate_image') }}" method="post" style="margin-bottom: 1rem;">
+        <input type="hidden" name="filename" value="{{ filename }}">
+        <button type="submit">Rotar Imagen</button>
+    </form>
+    <form action="{{ url_for('main.grayscale_image') }}" method="post">
+        <input type="hidden" name="filename" value="{{ filename }}">
+        <button type="submit">Escala de Grises</button>
+    </form>
+    <div style="margin-top: 2rem;">
+        <a href="{{ url_for('main.processing') }}"><button>Subir otra imagen</button></a>
+    </div>
+</div>
+{% endblock %}

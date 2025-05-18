@@ -11,6 +11,11 @@
 
 {% block body %}
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
+    <div style="margin-bottom: 1rem;">
+        <a href="{{ url_for('main.list_images') }}">
+            <button type="button">View Saved Images</button>
+        </a>
+    </div>
     <h2>upload the image for processing</h2>
     <form action="{{ url_for('main.processing') }}" method="post" enctype="multipart/form-data">
         <input type="file" name="file" id="fileInput" accept="image/*" required>

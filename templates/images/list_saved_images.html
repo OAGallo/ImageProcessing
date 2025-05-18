@@ -1,24 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Saved Images</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
+{% block title %}Saved Images{% endblock %}
+
+{% block body %}
     {% if message %}
         <p>{{ message }}</p>
     {% else %}
-
         <h1>Saved Images</h1>
         <ul>
             {% for image in images %}
                 <li>
-                    {{ image.filename }} - 
-                    <a href="{{ url_for('main.download_image', filename=image.filename) }}">Descargar</a>
+                    {{ image.filename }}
+                    <button type="button" onclick="showPreview('{{ url_for('main.download_image', filename=image.filename) }}')">Preview</button>
+                    <form method="get" action="{{ url_for('main.download_image', filename=image.filename) }}" style="display:inline;">
+                        <button type="submit">Descargar</button>
+                    </form>
                 </li>
             {% endfor %}
         </ul>
+        <img id="imagePreview" class="preview-img" src="#" alt="Preview" style="display:none; max-width:400px; margin:1rem auto;" />
     {% endif %}
-    <a href="{{ url_for('main.index') }}">Volver</a>
-</body>
-</html>
+    <div style="margin-top: 2rem;">
+        <a href="{{ url_for('main.processing') }}"><button>Regresar</button></a>
+    </div>
+    <script>
+        function showPreview(imgUrl) {
+            var preview = document.getElementById('imagePreview');
+            preview.src = imgUrl;
+            preview.style.display = 'block';
+        }
+    </script>
+{% endblock %}
