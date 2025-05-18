@@ -13,7 +13,7 @@ def register():
         email = request.form['email']
         password = request.form['password']
         if UserModel.query.filter_by(name=name).first():
-            flash('El usuario ya existe')
+            flash('The user already exist')
             return redirect(url_for('auth.register'))
         user = UserModel(
             name=name,
@@ -22,7 +22,7 @@ def register():
         )
         db.session.add(user)
         db.session.commit()
-        flash('Usuario creado exitosamente')
+        flash('User Created Succesfully')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html')
 
@@ -34,9 +34,8 @@ def login():
         user = UserModel.query.filter_by(name=name).first()
         if user and check_password_hash(user.password_hash, password):
             access_token = create_access_token(identity=user.id)
-            flash('Login exitoso')
-            # Puedes devolver el token o guardarlo en sesión/cookie según tu flujo
+            flash('Login success')
             return render_template('auth/login.html', token=access_token)
         else:
-            flash('Usuario o contraseña incorrectos')
+            flash('Incorrect user or password')
     return render_template('auth/login.html')
