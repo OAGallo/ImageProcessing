@@ -39,6 +39,8 @@ def processing():
             db.session.commit()
             flash('Image uploaded successfully!')
             return redirect(url_for('main.index'))
+        else:
+            flash('Invalid file type. Allowed formats (.png, .jpg, .jpeg, .gif)')
     return render_template("images/images.html")
 
 
@@ -54,3 +56,7 @@ def list_images():
         images = []
         message = "Data base or table doesn't exist"
     return render_template("images/list_saved_images.html", images=images)
+
+@main.route('/uploads/<filename>')
+def download_image(filename):
+    return send_from_directory('uploads', filename, as_attachment=True)
