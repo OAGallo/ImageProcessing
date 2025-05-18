@@ -35,7 +35,7 @@ def login():
         if user and check_password_hash(user.password_hash, password):
             access_token = create_access_token(identity=user.id)
             flash('Login success')
-            return render_template('iamges/images.html', token=access_token)
+            return render_template('images/images.html', token=access_token)
         else:
             flash('Incorrect user or password')
     return render_template('auth/login.html')

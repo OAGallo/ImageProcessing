@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, send_from_directory, flash
 import os
 from werkzeug.utils import secure_filename
-from Models import imagesModel
+from Models.imagesModel import Images
 from database import db
 
 main = Blueprint('main', __name__)
@@ -9,12 +9,6 @@ main = Blueprint('main', __name__)
 @main.route("/")
 def index():
     return render_template("index.html")
-
-
-@main.route("/Userlogin", methods=['GET', 'POST'])
-def userLogin():
-    return render_template("auth/login.html")
-
 
 #Image processing routes
 
@@ -39,7 +33,7 @@ def processing():
             os.makedirs(UPLOAD_FOLDER, exist_ok=True)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             # Guardar en la base de datos
-            image = imagesModel(filename=filename)
+            image = Images(filename=filename)
             db.session.add(image)
             db.session.commit()
             flash('Image uploaded successfully!')

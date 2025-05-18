@@ -14,5 +14,4 @@ def server():
     app.config['SECRET_KEY'] = secrets.token_hex(16)
     db.init_app(app) #Init database
     
-    
     return app
