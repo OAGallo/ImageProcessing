@@ -4,6 +4,8 @@ from werkzeug.utils import secure_filename
 from Models.imagesModel import Images
 from database import db
 
+import cv2 
+
 main = Blueprint('main', __name__)
 
 @main.route("/")
@@ -38,7 +40,8 @@ def processing():
             db.session.add(image)
             db.session.commit()
             flash('Image uploaded successfully!')
-            return redirect(url_for('main.index'))
+            #return redirect(url_for('main.index'))
+            return render_template("images/ProcessingMenu.html", filename=filename)
         else:
             flash('Invalid file type. Allowed formats (.png, .jpg, .jpeg, .gif)')
     return render_template("images/images.html")
@@ -60,3 +63,35 @@ def list_images():
 @main.route('/uploads/<filename>')
 def download_image(filename):
     return send_from_directory('uploads', filename, as_attachment=True)
+
+@main.route('/rotate_image', methods=['POST'])
+def rotate_image():
+    filename = request.form['filename']
+    filepath = os.path.join(UPLOAD_FOLDER, filename)
+    img = cv2.imread(filepath)
+    if img is not None:
+        rotated = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+        processed_filename = f"rotated_{filename}"
+        processed_path = os.path.join(UPLOAD_FOLDER, processed_filename)
+        cv2.imwrite(processed_path, rotated)
+        flash('Imagen rotada correctamente.')
+        return render_template("images/ProcessingMenu.html", filename=processed_filename)
+    else:
+        flash('No se pudo procesar la imagen.')
+        return redirect(url_for('main.processing'))
+    
+@main.route('/grayscale_image', methods=['POST'])
+def grayscale_image():
+    filename = request.form['filename']
+    filepath = os.path.join(UPLOAD_FOLDER, filename)
+    img = cv2.imread(filepath)
+    if img is not None:
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        processed_filename = f"gray_{filename}"
+        processed_path = os.path.join(UPLOAD_FOLDER, processed_filename)
+        cv2.imwrite(processed_path, gray)
+        flash('Imagen convertida a escala de grises.')
+        return render_template("images/ProcessingMenu.html", filename=processed_filename)
+    else:
+        flash('No se pudo procesar la imagen.')
+        return redirect(url_for('main.processing'))
