@@ -13,8 +13,12 @@
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
     <h2>upload the image for processing</h2>
     <form action="{{ url_for('main.processing') }}" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <button type="submit">Upload</button>
+        <input type="file" name="file" id="fileInput" accept="image/*" required>
+        <img id="preview" src="#" alt="Preview" style="display:none; max-width:300px; margin:1rem 0;" />
+        <div style="display: flex; gap: 1rem;">
+            <button type="submit">Upload</button>
+            <button type="button" id="cancelBtn">Cancelar</button>
+        </div>
     </form>
 
     {% with messages = get_flashed_messages() %}
@@ -27,4 +31,19 @@
     {% endif %}
     {% endwith %}
 </div>
+
+<script>
+    document.getElementById('fileInput').addEventListener('change', function(event){
+        const [file] = event.target.files;
+        const preview = document.getElementById('preview');
+        if(file){
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+        }else{
+            preview.src = '#';
+            preview.style.display = 'none';
+        }
+});
+</script>
+
 {% endblock %}
