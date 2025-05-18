@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
-<title>Image Processing</title>
-<h1>Author: Oscar Alberto Gallo García</h1>
- 
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
+    <title>Image Processing</title>
+    <h1>Image Processing: INBest</h1>
+    <h5>Author: Oscar Alberto Gallo Garcia</h5>
+</div>
 {% endblock %}
 
 {% block body %}
-
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
+    <a href="{{ url_for('main.userLogin') }}"><button>Login</button></a>
+</div>
 {% endblock %}

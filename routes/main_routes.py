@@ -43,3 +43,17 @@ def processing():
             flash('Image uploaded successfully!')
             return redirect(url_for('main.index'))
     return render_template("images/images.html")
+
+
+@main.route("/savedImages")
+def list_images():
+    try:
+        images = imagesModel.query.all()
+        if not images:
+            message = "Don't have saved images"
+        else:
+            message = None
+    except Exception as e:
+        images = []
+        message = "Data base or table doesn't exist"
+    return render_template("images/list_saved_images.html", images=images)
