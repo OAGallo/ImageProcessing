@@ -12,6 +12,7 @@ def server():
     #For data base configuration
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///images.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SECRET_KEY'] = 'INBest_cloud_for_humans'
     db.init_app(app) #Init database
     
     
