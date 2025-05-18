@@ -17,7 +17,7 @@
         <img id="preview" src="#" alt="Preview" style="display:none; max-width:300px; margin:1rem 0;" />
         <div style="display: flex; gap: 1rem;">
             <button type="submit">Upload</button>
-            <button type="button" id="cancelBtn">Cancelar</button>
+            <button type="button" id="cancelBtn">Cancel</button>
         </div>
     </form>
 
@@ -44,6 +44,15 @@
             preview.style.display = 'none';
         }
 });
+    //Cancel button 
+     document.getElementById('cancelBtn').addEventListener('click', function(){
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+        fileInput.value = '';
+        preview.src = '#';
+        preview.style.display = 'none';
+    });
+
 </script>
 
 {% endblock %}
