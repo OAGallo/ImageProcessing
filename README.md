@@ -10,7 +10,7 @@
 
    ```sh
    git clone <repo-url>
-   cd Test_Backend_INbest
+   cd ImageProcessing
    ```
 
 2. **Build the Docker image:**
@@ -37,7 +37,7 @@
 
    ```sh
    git clone <repo-url>
-   cd Test_Backend_INbest
+   cd ImageProcessing
    ```
 
 2. **Create and activate a virtual environment:**
