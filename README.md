@@ -1,6 +1,6 @@
 # ImageProcessing
 
-## How to use
+## How to run
 
 - Make sure you have [Docker](https://docs.docker.com/get-docker/) installed on your system.
 
@@ -72,3 +72,24 @@
    http://localhost:5000
    ```
 
+## How to use the app
+
+1. **Register or log in:**  
+   On the home page, click **"Create User"** to register a new account or **"Login"** if you already have one.
+
+2. **Upload an image:**  
+   After logging in, go to the image upload section. Click **"Browse"** to select an image from your computer and then click **"Upload"**.  
+   You will see a preview of the image before uploading.
+
+3. **Process the image:**  
+   After uploading, you will be taken to the processing menu. Here you can:
+   - Rotate the image by clicking **"Rotate Image"**.
+   - Convert the image to grayscale by clicking **"Gray Scale"**.
+   - Save the processed image by clicking **"Save Processed Image"**.
+
+4. **View or download saved images:**  
+   Click **"View Saved Images"** to see all images you have saved.  
+   You can preview or download any image from this list.
+
+5. **Upload another image:**  
+   Use the **"Back"** button in the processing menu to return to the upload page and process another image.
