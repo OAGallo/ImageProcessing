@@ -4,38 +4,6 @@
 
 - Make sure you have [Docker](https://docs.docker.com/get-docker/) installed on your system.
 
-## How to build and run the app
-
-1. **Clone this repository and enter the project folder:**
-
-   ```sh
-   git clone <repo-url>
-   cd Test_Backend_INbest
-   ```
-
-2. **Build the Docker image:**
-
-   ```sh
-   docker build -t imageprocessing-app .
-   ```
-
-3. **Run the container:**
-
-   ```sh
-   docker run -p 5000:5000 imageprocessing-app
-   ```
-
-4. **Open your browser and go to:**
-
-   ```
-   http://localhost:5000
-   ```
-# ImageProcessing
-
-## How to use
-
-- Make sure you have [Docker](https://docs.docker.com/get-docker/) installed on your system.
-
 ## How to build and run the app with Docker
 
 1. **Clone this repository and enter the project folder:**
