@@ -1,47 +1,106 @@
-# ImageProcessing 
+# ImageProcessing
 
-## Requisitos
+## How to use
 
-- [Docker](https://docs.docker.com/get-docker/) instalado en tu sistema.
+- Make sure you have [Docker](https://docs.docker.com/get-docker/) installed on your system.
 
-## ¿Cómo construir y correr la app?
+## How to build and run the app
 
-1. **Clona este repositorio y entra a la carpeta del proyecto:**
+1. **Clone this repository and enter the project folder:**
 
    ```sh
-   git clone <url-del-repo>
+   git clone <repo-url>
    cd Test_Backend_INbest
    ```
 
-2. **Construye la imagen de Docker:**
+2. **Build the Docker image:**
 
    ```sh
    docker build -t imageprocessing-app .
    ```
 
-3. **Corre el contenedor:**
+3. **Run the container:**
 
    ```sh
    docker run -p 5000:5000 imageprocessing-app
    ```
 
-4. **Abre tu navegador y entra a:**
+4. **Open your browser and go to:**
+
+   ```
+   http://localhost:5000
+   ```
+# ImageProcessing
+
+## How to use
+
+- Make sure you have [Docker](https://docs.docker.com/get-docker/) installed on your system.
+
+## How to build and run the app with Docker
+
+1. **Clone this repository and enter the project folder:**
+
+   ```sh
+   git clone <repo-url>
+   cd Test_Backend_INbest
+   ```
+
+2. **Build the Docker image:**
+
+   ```sh
+   docker build -t imageprocessing-app .
+   ```
+
+3. **Run the container:**
+
+   ```sh
+   docker run -p 5000:5000 imageprocessing-app
+   ```
+
+4. **Open your browser and go to:**
 
    ```
    http://localhost:5000
    ```
 
-## Notas
+## How to run the app using Python virtual environment (venv)
 
-- Los archivos subidos y la base de datos SQLite se almacenan dentro del contenedor.  
-  Si quieres persistencia, puedes montar un volumen:
+1. **Clone this repository and enter the project folder:**
 
-  ```sh
-  docker run -p 5000:5000 -v $(pwd)/uploads:/app/uploads -v $(pwd)/images.db:/app/images.db imageprocessing-app
-  ```
+   ```sh
+   git clone <repo-url>
+   cd Test_Backend_INbest
+   ```
 
-- Si cambias el código, reconstruye la imagen con `docker build ...`.
+2. **Create and activate a virtual environment:**
 
----
+   On Linux:
+   ```sh
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 
-¡Listo! Así puedes correr tu app Flask con OpenCV en Docker fácilmente.
+   On Windows:
+   ```sh
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+3. **Install the dependencies:**
+
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+4. **Run the application:**
+
+   ```sh
+   python app.py
+   ```
+
+5. **Open your browser and go to:**
+
+   ```
+   http://localhost:5000
+   ```
+
