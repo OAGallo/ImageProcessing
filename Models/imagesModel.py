@@ -8,5 +8,7 @@ class Images(db.Model):
     
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    
     def __repr__(self):
         return f'<Image {self.filename}>'

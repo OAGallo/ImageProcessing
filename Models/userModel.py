@@ -9,6 +9,11 @@ class UserModel(db.Model):
     email = db.Column(db.String(255))
     password_hash = db.Column(db.String(255), nullable=False)
     
+    #Relation with images table:
+    # 1:N (1 user can save N images)
+    images = db.relationship('Images', backref='user', lazy=True)
+    
+    
     def __repr__(self):
         return f'User {self.name}'
     
@@ -17,3 +22,5 @@ class UserModel(db.Model):
     
     def get_check_password(self, password):
         return check_password_hash(self.password_hash, password) 
+    
+    
